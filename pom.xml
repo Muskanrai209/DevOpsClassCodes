@@ -198,9 +198,8 @@
     </build>
 	
 	  
-    <reporting>
-    <plugins>
-      <plugin>
+    <reporting>     
+    <plugin>
   <artifactId>maven-surefire-plugin</artifactId>
   <configuration>
    <argLine>${argLine}</argLine>
