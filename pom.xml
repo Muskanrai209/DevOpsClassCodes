@@ -181,6 +181,7 @@
 				<configuration>
 					<parallel>methods</parallel>
 					<threadCount>10</threadCount>
+                                         <argLine>${argLine}</argLine>
 					<includes>
 						<include>**/Test*.java</include>
 						<include>**/Test.java</include>
@@ -200,11 +201,11 @@
     <reporting>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.19.1</version>
-      </plugin>
-    </plugins>
+  <artifactId>maven-surefire-plugin</artifactId>
+  <configuration>
+   <argLine>${argLine}</argLine>
+  </configuration>
+ </plugin>
   </reporting>
   
       <profiles>
@@ -305,6 +306,13 @@
                                     <groupId>org.jacoco</groupId>
                                     <artifactId>jacoco-maven-plugin</artifactId>
                                     <version>0.7.2.201409121644</version>
+					  <configuration>
+        <skip>${maven.test.skip}</skip>
+        <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+        <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+        <output>file</output>
+        <append>true</append>
+    </configuration>
 					 <executions>
         <execution>
             <goals>
